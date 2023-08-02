@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorting Lists</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Employee Generator</h1>
     <label for="numOfEmployees">Number of Employees:</label>
     <input type="number" id="numOfEmployees">
-    <button id="generateButton">Generate Employees</button> <!-- Corrected ID here -->
+    <button id="generateButton">Generate Employees</button>
     <br>
     <label for="search">Search:</label>
     <input type="text" id="search">
@@ -23,7 +24,18 @@
         <option value="quick">Quick Sort</option>
     </select>
     <p id="sortingTime"></p>
-    <ul id="employeeList"></ul>
+    <table>
+        <thead>
+            <tr>
+                <th onclick="sort('name')">Name</th>
+                <th onclick="sort('age')">Age</th>
+                <th onclick="sort('salary')">Salary</th>
+                <th onclick="sort('sex')">Sex</th>
+                <th onclick="sort('yearsWorked')">Years Worked</th>
+            </tr>
+        </thead>
+        <tbody id="employeeListBody"></tbody>
+    </table>
     <ul id="unsortedEmployeeList"></ul>
     <script src="script.js"></script>
 </body>

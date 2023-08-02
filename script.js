@@ -15,13 +15,12 @@ async function generateRandomEmployee() {
     const lastNames = await readNamesFromFile("lastNames.txt");
     const sexes = ["Male", "Female"];
     const yearsWorked = Math.floor(Math.random() * 20) + 1;
-    console.log(`${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`);
     return {
-        name: `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`,
-        age: Math.floor(Math.random() * 30) + 20,
-        salary: Math.floor(Math.random() * 100000) + 30000,
-        sex: sexes[Math.floor(Math.random() * sexes.length)],
-        yearsWorked: yearsWorked
+        Name: `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`,
+        Age: Math.floor(Math.random() * 30) + 20,
+        Salary: Math.floor(Math.random() * 100000) + 30000,
+        Sex: sexes[Math.floor(Math.random() * sexes.length)],
+        'Years Worked': yearsWorked
     };
 }
 
@@ -47,12 +46,32 @@ async function generateEmployees() {
 // Function to display employees in the list
 function displayEmployees() {
     const employeeList = document.getElementById("employeeList");
-    employeeList.innerHTML = "";
+    employeeList.innerHTML = ""; // Clear the previous table data
 
     employees.forEach(employee => {
-        const listItem = document.createElement("li");
-        listItem.textContent = `Name: ${employee.name}, Age: ${employee.age}, Salary: $${employee.salary}, Sex: ${employee.sex}, Years Worked: ${employee.yearsWorked}`;
-        employeeList.appendChild(listItem);
+        const row = document.createElement("tr");
+
+        const nameCell = document.createElement("td");
+        nameCell.textContent = employee.Name; // Display the value without category name
+        row.appendChild(nameCell);
+
+        const ageCell = document.createElement("td");
+        ageCell.textContent = employee.Age; // Display the value without category name
+        row.appendChild(ageCell);
+
+        const salaryCell = document.createElement("td");
+        salaryCell.textContent = `$${employee.Salary}`; // Display the value without category name
+        row.appendChild(salaryCell);
+
+        const sexCell = document.createElement("td");
+        sexCell.textContent = employee.Sex; // Display the value without category name
+        row.appendChild(sexCell);
+
+        const yearsWorkedCell = document.createElement("td");
+        yearsWorkedCell.textContent = employee['Years Worked']; // Display the value without category name
+        row.appendChild(yearsWorkedCell);
+
+        employeeList.appendChild(row);
     });
 }
 
@@ -63,7 +82,7 @@ function displayUnsortedEmployees() {
 
     unsortedEmployees.forEach(employee => {
         const listItem = document.createElement("li");
-        listItem.textContent = `Name: ${employee.name}, Age: ${employee.age}, Salary: $${employee.salary}, Sex: ${employee.sex}, Years Worked: ${employee.yearsWorked}`;
+        listItem.textContent = `${employee.Name}, ${employee.Age}, $${employee.Salary}, ${employee.Sex}, ${employee['Years Worked']}`; // Display the values without category names
         unsortedEmployeeList.appendChild(listItem);
     });
 }
@@ -90,9 +109,29 @@ function displayFilteredEmployees(filteredEmployees) {
     employeeList.innerHTML = "";
 
     filteredEmployees.forEach(employee => {
-        const listItem = document.createElement("li");
-        listItem.textContent = `Name: ${employee.name}, Age: ${employee.age}, Salary: $${employee.salary}, Sex: ${employee.sex}, Years Worked: ${employee.yearsWorked}`;
-        employeeList.appendChild(listItem);
+        const row = document.createElement("tr");
+
+        const nameCell = document.createElement("td");
+        nameCell.textContent = employee.Name; // Display the value without category name
+        row.appendChild(nameCell);
+
+        const ageCell = document.createElement("td");
+        ageCell.textContent = employee.Age; // Display the value without category name
+        row.appendChild(ageCell);
+
+        const salaryCell = document.createElement("td");
+        salaryCell.textContent = `$${employee.Salary}`; // Display the value without category name
+        row.appendChild(salaryCell);
+
+        const sexCell = document.createElement("td");
+        sexCell.textContent = employee.Sex; // Display the value without category name
+        row.appendChild(sexCell);
+
+        const yearsWorkedCell = document.createElement("td");
+        yearsWorkedCell.textContent = employee['Years Worked']; // Display the value without category name
+        row.appendChild(yearsWorkedCell);
+
+        employeeList.appendChild(row);
     });
 }
 
@@ -163,5 +202,29 @@ async function sortEmployees() {
     const sortingTime = endTime - startTime;
     document.getElementById("sortingTime").textContent = `Sorting Time: ${sortingTime.toFixed(2)} milliseconds`;
 
+    displayEmployees();
+}
+
+// Function to sort employees by the specified attribute
+function sort(attribute) {
+    switch (attribute) {
+        case 'name':
+            employees.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+        case 'age':
+            employees.sort((a, b) => a.age - b.age);
+            break;
+        case 'salary':
+            employees.sort((a, b) => a.salary - b.salary);
+            break;
+        case 'sex':
+            employees.sort((a, b) => a.sex.localeCompare(b.sex));
+            break;
+        case 'yearsWorked':
+            employees.sort((a, b) => a.yearsWorked - b.yearsWorked);
+            break;
+        default:
+            break;
+    }
     displayEmployees();
 }
