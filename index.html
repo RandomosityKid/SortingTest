@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorting Lists</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <h1>Employee Generator</h1>
     <label for="numOfEmployees">Number of Employees:</label>
-    <input type="number" id="numOfEmployees">
+    <input type="number" id="numOfEmployees" />
     <button id="generateButton">Generate Employees</button>
-    <br>
+    <br />
     <label for="search">Search:</label>
-    <input type="text" id="search">
+    <input type="text" id="search" />
     <button id="clearButton">Clear List</button>
     <button id="sortButton">Sort Employees</button>
-    <br>
+    <br />
     <label for="sortAlgorithm">Sorting Algorithm:</label>
     <select id="sortAlgorithm">
-        <option value="bubble">Bubble Sort</option>
-        <option value="insertion">Insertion Sort</option>
-        <option value="quick">Quick Sort</option>
+      <option value="bubble">Bubble Sort</option>
+      <option value="insertion">Insertion Sort</option>
+      <option value="quick">Quick Sort</option>
     </select>
     <p id="sortingTime"></p>
-    <table>
-        <thead>
-            <tr>
-                <th onclick="sort('name')">Name</th>
-                <th onclick="sort('age')">Age</th>
-                <th onclick="sort('salary')">Salary</th>
-                <th onclick="sort('sex')">Sex</th>
-                <th onclick="sort('yearsWorked')">Years Worked</th>
-            </tr>
-        </thead>
-        <tbody id="employeeListBody"></tbody>
+    <div>
+      <button onclick="changeSalaryCurrency('USD')">USD</button>
+      <button onclick="changeSalaryCurrency('GBP')">GBP</button>
+      <button onclick="changeSalaryCurrency('PHP')">PHP</button>
+    </div>
+    <table class="table table-bordered" id="crudTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Salary</th>
+          <th>Sex</th>
+          <th>Years Worked</th>
+        </tr>
+      </thead>
+      <tbody id="employeeListBody"></tbody>
     </table>
-    <ul id="unsortedEmployeeList"></ul>
-    <script src="script.js"></script>
-</body>
+    <script src="script.js?v=11"></script>
+  </body>
 </html>
