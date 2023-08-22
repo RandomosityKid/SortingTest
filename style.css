@@ -44,3 +44,7 @@ tbody td {
 #sortingTime {
     margin-top: 20px;
 }
+
+.right-aligned{
+    text-align: right;
+}
