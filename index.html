@@ -25,9 +25,9 @@
     </select>
     <p id="sortingTime"></p>
     <div>
-      <button onclick="changeSalaryCurrency('USD')">USD</button>
-      <button onclick="changeSalaryCurrency('GBP')">GBP</button>
-      <button onclick="changeSalaryCurrency('PHP')">PHP</button>
+      <button class="currency-button" data-currency="USD">USD</button>
+      <button class="currency-button" data-currency="GBP">GBP</button>
+      <button class="currency-button" data-currency="PHP">PHP</button>
     </div>
     <table class="table table-bordered" id="crudTable">
       <thead>
@@ -41,6 +41,6 @@
       </thead>
       <tbody id="employeeListBody"></tbody>
     </table>
-    <script src="script.js?v=30"></script>
+    <script type="module" src="script.js?v=31"></script>
   </body>
 </html>
